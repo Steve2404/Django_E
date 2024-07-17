@@ -1,0 +1,38 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Le bloc</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+ {% comment %}   {% if blog %}
+        <h1>Le blog contient {{ blog.count }} articles</h1>
+        {% for blog_post in blog %}
+            <h2>{{ forloop.counter }}. {{ blog_post.title }}</h2>
+            {% if forloop.last %}
+                <hr>
+            {% endif %}
+        {% endfor %}
+    {% elif not blog %}
+        <h1>Le blog ne contient aucun article</h1>
+    {% endif %}{% endcomment %}
+
+
+    {% for blog_post in blog %}
+        {% if forloop.first %}
+             <h1>Le blog contient {{ blog.count }} articles</h1>
+        {% endif %}
+        <a href="{% url 'blog3' blog_post.slug %}">
+            <h2>{{ forloop.counter }}. {{ blog_post.title }}</h2>
+            {% if forloop.last %}
+                <hr>
+            {% endif %}
+        </a>
+    {% empty %}
+        <h1>Le blog ne contient aucun article</h1>
+    {% endfor %}
+
+</body>
+</html>
