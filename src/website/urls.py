@@ -19,8 +19,7 @@ from django.urls import path
 from blog.views import (blog_post, blog_posts, blog_posts1,
                         blog_post_error, passes_test, passes_test_group,
                         blog_posts2, blog_posts3)
-from website.views import home
-
+from website.views import home, signup
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -33,4 +32,5 @@ urlpatterns = [
     path('blog/<int:pk>/', blog_posts, name='blog_pk'),
     path('blog/<str:slug>/', blog_posts1, name='blog-post1'),
     path('blog/article/<str:slug>/', blog_posts3, name='blog3'),
+    path('signup/', signup, name='form'),
 ]
