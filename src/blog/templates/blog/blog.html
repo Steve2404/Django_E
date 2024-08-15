@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Creer un Article</title>
+</head>
+<body>
+<a href="{% url 'blog-listes' %}">Listes des articles</a>
+<h1>{{ title }}</h1>
+<form action="" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="{{ valeur }}">
+</form>
+</body>
+</html>

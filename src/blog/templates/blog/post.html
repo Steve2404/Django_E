@@ -1,6 +1,11 @@
 {% extends 'website/base.html' %}
 
 {% block title %} <title>{{ blog.title }}</title> {% endblock %}
-{% block h1 %} <h1>{{ blog.title }}</h1> {% endblock %}
+{% block h1 %}
+    <a href="{% url 'blog-edit' slug=blog.slug %}">Modifier</a>
+    <a href="{% url 'blog-delete' slug=blog.slug %}">Supprimer</a>
+    <h1>{{ blog.title }}</h1>
+    <p>{{ blog.content }}</p>
+{% endblock %}
 
 

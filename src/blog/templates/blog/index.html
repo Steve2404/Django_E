@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Listes</title>
+</head>
+<body>
+<a href="{% url 'blog-listes' %}">Listes des articles</a>
+<h1>Mon Super Site</h1>
+
+{% for post in posts %}
+    <a href="{% url 'blog-detail' slug=post.slug %}">
+        <h3>{{ post.title }}</h3>
+    </a>
+    <p>{{ post.content|truncatewords:10|striptags|safe }}</p>
+{% endfor %}
+
+</body>
+</html>

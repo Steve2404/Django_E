@@ -18,19 +18,24 @@ from django.urls import path
 
 from blog.views import (blog_post, blog_posts, blog_posts1,
                         blog_post_error, passes_test, passes_test_group,
-                        blog_posts2, blog_posts3)
-from website.views import home, signup
+                        blog_posts2, blog_posts3, BlogIndexView, BlogPostDetailView, BlogPostCreateView,
+                        BlogPostUpdateView, BlogPostDeleteView)
+from website.views import home, signup, webseite_post, HomeView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', home, name='home'),
+    path('', HomeView.as_view(), name='home'),
     path('blog/', blog_post, name='blog-index'),
+    path('blog/listes/', BlogIndexView.as_view(), name='blog-listes'),
     path('blog/articles/', blog_posts2, name='articles'),
+    path('blog/create/', BlogPostCreateView.as_view(), name="post-create"),
     path('blog/error/', blog_post_error, name='error'),
     path('blog/test/', passes_test, name='passes_test'),
     path('blog/test/group', passes_test_group, name='passes_test_group'),
     path('blog/<int:pk>/', blog_posts, name='blog_pk'),
-    path('blog/<str:slug>/', blog_posts1, name='blog-post1'),
+    path('blog/<str:slug>/', BlogPostDetailView.as_view(), name='blog-detail'),
+    path('blog/<str:slug>/edit/', BlogPostUpdateView.as_view(), name='blog-edit'),
+    path('blog/<str:slug>/delete/', BlogPostDeleteView.as_view(), name='blog-delete'),
     path('blog/article/<str:slug>/', blog_posts3, name='blog3'),
     path('signup/', signup, name='form'),
 ]

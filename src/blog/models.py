@@ -44,8 +44,8 @@ class BlogPost(models.Model):
 
         super().save(*args, **kwargs)
 
-    def get_absolute_url(self):
-        return reverse('blog-post1', kwargs={'slug': self.slug})
+    # def get_absolute_url(self):
+    #    return reverse('blog-detail', kwargs={'slug': self.slug})
 
     @property
     def world_count(self):
